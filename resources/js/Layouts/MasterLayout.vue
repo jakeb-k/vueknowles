@@ -4,6 +4,7 @@ import NavLink from "@/Components/NavLink.vue";
 import FooterLink from "@/Components/FooterLink.vue";
 import Logo from "@/Components/Logo.vue";
 import { ref, computed, onUnmounted, watchEffect } from "vue";
+import moment from "moment";
 
 const isScrolled = ref(false);
 
@@ -94,7 +95,7 @@ const navClasses = computed(() =>
             <div
                 class="w-1/3 flex justify-around text-night text-md lg:text-xl tracking-wide font-bebas"
             >
-                © 2024 Jakeb Knowles
+                © {{ moment().year() }} Jakeb Knowles
             </div>
 
             <div
