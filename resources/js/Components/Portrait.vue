@@ -1,19 +1,27 @@
 <template>
-    <div class="h-3/5 " >
-      <img :src="portraitUrl" alt="portrait" 
-      class="mb-14 lg:mb-0 h-[340px] w-[340px] lg:h-[390px] lg:w-[390px] border-[2px] border-neon
-      rounded-md object-cover">
+    <div class="card-container">
+        <div class="card">
+            <div
+                class="card-front rounded border-2 border-neon cursor-pointer"
+            ></div>
+            <div
+                class="card-back rounded border-2 border-neon shadow-about"
+            ></div>
+        </div>
     </div>
 </template>
-  
-  <script>
-  import portraitUrl from '../assets/images/jakey.webp';
-  
-  export default {
+
+<script>
+import portraitUrl from "../assets/images/jakey.webp";
+
+export default {
     data() {
-      return {
-        portraitUrl
-      };
-    }
-  }
-  </script>
+        return {
+            portraitUrl,
+            isFlipped: false,
+        };
+    },
+    mounted() {},
+    methods: {},
+};
+</script>
