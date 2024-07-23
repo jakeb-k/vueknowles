@@ -1,14 +1,13 @@
 <script setup>
-import { defineProps} from 'vue';
-import { Head } from '@inertiajs/vue3';
-import MasterLayout from '@/Layouts/MasterLayout.vue'; 
+import { defineProps } from "vue";
+import { Head } from "@inertiajs/vue3";
+import MasterLayout from "@/Layouts/MasterLayout.vue";
 
-import Line from '@/Components/Line.vue'; 
-import Splash from '@/Components/Splash.vue';
-import About from '@/Components/About.vue'; 
-import Projects from '@/Components/Projects.vue'; 
-import Contact from '@/Components/Contact.vue'; 
-
+import Line from "@/Components/Line.vue";
+import Splash from "@/Components/Splash.vue";
+import About from "@/Components/About.vue";
+import Projects from "@/Components/Projects.vue";
+import Contact from "@/Components/Contact.vue";
 
 defineProps({
     canLogin: {
@@ -26,27 +25,26 @@ defineProps({
         required: true,
     },
     webProjects: {
-        type: Array
+        type: Array,
     },
     mobileProjects: {
-        type: Array
+        type: Array,
     },
 });
-
 </script>
 
 <template>
-    
-    <Head title="Welcome" />
-  
-        <MasterLayout>
-            <Splash></Splash>
-            <About></About>
-            <Line></Line>
-            <Projects :webProjects="webProjects" :mobileProjects="mobileProjects"></Projects>
-            <Line></Line>
-            <Contact></Contact>
-        </MasterLayout>
-    
+    <Head title="Jakeb Knowles" />
 
+    <MasterLayout>
+        <Splash></Splash>
+        <About></About>
+        <Line></Line>
+        <Projects
+            :webProjects="webProjects"
+            :mobileProjects="mobileProjects"
+        ></Projects>
+        <Line></Line>
+        <Contact></Contact>
+    </MasterLayout>
 </template>

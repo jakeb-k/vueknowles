@@ -30,9 +30,11 @@ class ContactMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $subject = isset($this->data['name']) ? $this->data['name'] : 'Message from Portfolio';
+
         return new Envelope(
             from: new Address('contact@jakebknowles.com', 'Contact Message'),
-            subject: 'New Message',
+            subject: $subject,
         );
     }
 
