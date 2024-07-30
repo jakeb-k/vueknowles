@@ -13,13 +13,58 @@
         <h2
             class="type-wrap text-2xl lg:text-3xl font-bebas tracking-wider mb-4"
         >
-            <span  v-html="formattedText"></span>
+            <span v-html="formattedText"></span>
             <span :class="isComplete ? 'opacity-0' : 'cursor'">|</span>
             <i
                 v-if="isComplete"
                 class="fa-solid fa-wand-magic-sparkles text-white"
             ></i>
         </h2>
+        <ul class="list-disc font-mono text-neon my-4 lg:mx-6 space-y-6">
+            <li>
+                <b class="text-lg">Tech Savvy and Versatile:</b> With a
+                <span class="text-white"
+                    >Bachelors Degree in Information Technology</span
+                >
+                and
+                <span class="text-white"
+                    >2 years of real world experience,</span
+                >
+                I've mastered
+                <span class="text-white"
+                    >JavaScript, Angular, React, Vue, Laravel, PHP, Python,
+                    CSS</span
+                >
+                and various
+                <span class="text-white">database technologies</span>, ready to
+                tackle anything from front-end flair to back-end magic.
+            </li>
+            <li>
+                <b class="text-lg">Project Innovator:</b> Projects like
+                <a
+                    href="public/projects/Aussie_PicklePro"
+                    class="text-white hover:underline"
+                    >Aussie PicklePro</a
+                >
+                and <a
+                    href="public/projects/Nomster"
+                    class="text-white hover:underline"
+                    >Nomster</a> aren't just lines on my resume; they're proof of my
+                passion for <span class="text-white"
+                >creating cool, cutting-edge stuff.</span> I love diving
+                into new frameworks and <span class="text-white"
+                >turning ideas into reality. </span>
+            </li>
+            <li>
+                <b class="text-lg">Team Player and Adaptable: </b>Whether <span class="text-white"
+                >leading a team or
+                rolling with the punches,</span> I thrive on new challenges and love
+                <span class="text-white"
+                    >driving innovation.</span> I'm all about keeping things dynamic and
+                <span class="text-white"
+                    >making tech magic happen!</span>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -29,7 +74,7 @@ export default {
         return {
             typedText: "",
             fullText: `From 'Hello World' to Full-Stack Wizard`,
-            typingSpeed: 60, // milliseconds
+            typingSpeed: 40, // milliseconds
             isComplete: false,
             whiteWords: ["'Hello World'", "Full-Stack Wizard"],
         };
