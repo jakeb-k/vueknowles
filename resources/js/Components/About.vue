@@ -5,7 +5,7 @@ import AboutInfo from "./AboutInfo.vue";
 <template>
     <div
         id="about"
-        class="h-full bg-night flex flex-col lg:flex-row justify-around py-36 px-48"
+        class="h-full bg-night flex flex-col lg:flex-row justify-between lg:px-32 py-36"
     >
         <Portrait />
         <AboutInfo />

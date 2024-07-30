@@ -1,7 +1,8 @@
 <script setup></script>
 <template>
     <div
-        class="w-3/5 bg-night rounded text-[#2db2ff] shadow-about border-[2px] border-neon p-8"
+        ref="container"
+        class="ml-12 flex-1 bg-night rounded text-[#2db2ff] shadow-about border-[2px] border-neon p-8 relative"
     >
         <h1
             class="absolute -top-7 lg:-top-12 text-2xl lg:text-4xl font-bebas tracking-wider"
@@ -9,26 +10,16 @@
             About: <span class="text-white"> Jakeb Knowles</span>
         </h1>
 
-        <h1
-            class="type-wrap text-2xl lg:text-4xl font-bebas tracking-wider mb-4"
+        <h2
+            class="type-wrap text-2xl lg:text-3xl font-bebas tracking-wider mb-4"
         >
-            <span>{{ typedText }}</span>
-            <span class="cursor">|</span>
-        </h1>
-        <p class="text-[12px] lg:text-lg font-mono mb-5">
-            As a natural-born coder, my fascination with technology was ignited
-            the moment I saw 'Hello World' echo in the terminal, setting me on
-            an unyielding path in software development. With a Bachelor of
-            Information Technology from Griffith University and hands-on
-            experience in developing cutting-edge projects like Aussie PicklePro
-            and Nomster, I've honed a diverse skill set across full-stack
-            development. My expertise spans from JavaScript, Angular, and React
-            to Laravel, Python, and various database technologies. Beyond
-            technical prowess, my ability to lead teams, adapt to new
-            challenges, and drive innovation positions me as a dynamic force
-            ready to contribute to groundbreaking projects in the tech
-            landscape.
-        </p>
+            <span  v-html="formattedText"></span>
+            <span :class="isComplete ? 'opacity-0' : 'cursor'">|</span>
+            <i
+                v-if="isComplete"
+                class="fa-solid fa-wand-magic-sparkles text-white"
+            ></i>
+        </h2>
     </div>
 </template>
 
@@ -37,12 +28,27 @@ export default {
     data() {
         return {
             typedText: "",
-            fullText: "Code · Create · Conquer",
-            typingSpeed: 100, // milliseconds
+            fullText: `From 'Hello World' to Full-Stack Wizard`,
+            typingSpeed: 60, // milliseconds
+            isComplete: false,
+            whiteWords: ["'Hello World'", "Full-Stack Wizard"],
         };
     },
     mounted() {
         this.createObserver();
+    },
+    computed: {
+        formattedText() {
+            let text = this.typedText;
+            this.whiteWords.forEach((word) => {
+                const regex = new RegExp(word, "g");
+                text = text.replace(
+                    regex,
+                    `<span style="color: white;">${word}</span>`
+                );
+            });
+            return text;
+        },
     },
     methods: {
         createObserver() {
@@ -55,7 +61,7 @@ export default {
                 });
             });
 
-            observer.observe(this.$el);
+            observer.observe(this.$refs.container);
         },
         typeText() {
             let i = 0;
@@ -65,8 +71,14 @@ export default {
                     i++;
                 } else {
                     clearInterval(timer);
+                    this.isComplete = true;
                 }
             }, this.typingSpeed);
+        },
+    },
+    watch: {
+        isComplete() {
+            console.log(this.isComplete);
         },
     },
 };
